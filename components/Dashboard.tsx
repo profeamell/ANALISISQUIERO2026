@@ -10,9 +10,9 @@ interface DashboardProps {
 
 const PERFORMANCE_LEVELS = [
   { name: 'Bajo', min: 0, max: 59.99, color: '#f43f5e' }, // Rose-500
-  { name: 'Básico', min: 60, max: 79.99, color: '#f59e0b' }, // Amber-500
+  { name: 'Básico', min: 60, max: 79.99, color: '#10b981' }, // Emerald-500
   { name: 'Alto', min: 80, max: 94.99, color: '#3b82f6' }, // Blue-500
-  { name: 'Superior', min: 95, max: 100, color: '#10b981' } // Emerald-500
+  { name: 'Superior', min: 95, max: 100, color: '#059669' } // Emerald-600
 ];
 
 const PerformancePieChart: React.FC<{ 
@@ -163,12 +163,12 @@ const RankingModal: React.FC<{
                     </td>
                     <td className="px-6 py-6 text-right">
                       <div className="flex flex-col items-end gap-1">
-                        <span className={`text-lg font-black ${percentage > 60 ? 'text-emerald-500' : 'text-rose-500'}`}>
+                        <span className={`text-lg font-black ${percentage >= 60 ? 'text-emerald-500' : 'text-rose-500'}`}>
                           {percentage.toFixed(1)}%
                         </span>
                         <div className="w-32 h-1.5 bg-slate-100 rounded-full overflow-hidden">
                           <div 
-                            className={`h-full transition-all duration-1000 ${percentage > 60 ? 'bg-emerald-500' : 'bg-rose-500'}`} 
+                            className={`h-full transition-all duration-1000 ${percentage >= 60 ? 'bg-emerald-500' : 'bg-rose-500'}`} 
                             style={{ width: `${percentage}%` }}
                           />
                         </div>
@@ -355,11 +355,11 @@ const QuestionCard: React.FC<{ stat: QuestionStats; onOpenDetails: (s: QuestionS
     <div className="space-y-1 mb-6">
       <div className="flex justify-between text-xs font-bold">
         <span className="text-slate-500">Nivel de Logro</span>
-        <span className={stat.porcentaje > 60 ? 'text-emerald-500' : 'text-rose-500'}>{stat.porcentaje.toFixed(1)}%</span>
+        <span className={stat.porcentaje >= 60 ? 'text-emerald-500' : 'text-rose-500'}>{stat.porcentaje.toFixed(1)}%</span>
       </div>
       <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
         <div 
-          className={`h-full transition-all duration-700 ${stat.porcentaje > 60 ? 'bg-emerald-500' : 'bg-rose-500'}`} 
+          className={`h-full transition-all duration-700 ${stat.porcentaje >= 60 ? 'bg-emerald-500' : 'bg-rose-500'}`} 
           style={{ width: `${stat.porcentaje}%` }}
         />
       </div>
@@ -471,7 +471,7 @@ const PedagogicalAnalysis: React.FC<{ stats: QuestionStats[] }> = ({ stats }) =>
                       {item.count} {item.count === 1 ? 'Pregunta' : 'Preguntas'}
                     </span>
                   </div>
-                  <span className={`text-lg font-black ${item.percentage < 60 ? 'text-rose-600' : 'text-amber-600'}`}>
+                  <span className={`text-lg font-black ${item.percentage < 60 ? 'text-rose-600' : 'text-emerald-600'}`}>
                     {item.percentage.toFixed(1)}%
                   </span>
                 </div>
@@ -631,7 +631,7 @@ const Dashboard: React.FC<DashboardProps> = ({ results }) => {
                           </span>
                         </td>
                         <td className="px-6 py-5 text-right">
-                          <span className={`text-lg font-black ${s.porcentaje > 60 ? 'text-emerald-500' : 'text-rose-500'}`}>
+                          <span className={`text-lg font-black ${s.porcentaje >= 60 ? 'text-emerald-500' : 'text-rose-500'}`}>
                             {s.porcentaje.toFixed(1)}%
                           </span>
                         </td>

@@ -20,7 +20,7 @@ export const parseExcelFile = async (file: File): Promise<any[][]> => {
     reader.onload = (e) => {
       try {
         const data = new Uint8Array(e.target?.result as ArrayBuffer);
-        const workbook = XLSX.read(data, { type: 'array', cellStyles: true, cellFormula: true, cellLinks: true });
+        const workbook = XLSX.read(data, { type: 'array', cellStyles: true, cellFormula: true });
         const worksheet = workbook.Sheets[workbook.SheetNames[0]];
         const rawData: any[][] = XLSX.utils.sheet_to_json(worksheet, { 
           header: 1, 
