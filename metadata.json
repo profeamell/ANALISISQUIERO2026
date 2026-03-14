@@ -1,0 +1,5 @@
+{
+  "name": "EduAnalisQuieroSerQuieroAprender - I.E. La Pascuala",
+  "description": "Una herramienta avanzada para analizar el rendimiento académico procesando archivos de Excel de estudiantes y claves de respuestas, con visualizaciones detalladas por materia (Lenguaje y Matemáticas).",
+  "requestFramePermissions": []
+}
